@@ -1,0 +1,28 @@
+<% include index.ejs%>
+<div class="w-100 p-2">
+</div>
+<div class="wrapper">
+    <div class="card w-25">
+        <div class="card-header h4 text-center">
+           <span>Profile</span> 
+            <a class="ml-auto btn btn-primary" href="/logout"> Logout </a>
+
+        </div>
+        <div class="card-body">
+            <table>
+                <tr>
+                    <th> First Name</th>
+                    <td> <%= user.firstName%> </td>
+                </tr>
+                <tr>
+                    <th> Last Name </th>
+                    <td> <%= user.lastName%> </td>
+                </tr>
+                <tr>
+                    <th> Email </th>
+                    <td> <%= user.email%> </td>      
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
