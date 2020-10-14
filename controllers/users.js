@@ -3,7 +3,9 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
 exports.getProfile = (req, res, next) =>{
-    // res.render('profile', { title: 'Profile', user:req.session.user });
+  try{
+
+
     User.findOne({ where:{email:req.params.email}}).then((user)=>{
       if(user){
         res.json({ success: true, status: 'User Retrieved Successfully!', user: user['dataValues'] });
@@ -15,10 +17,14 @@ exports.getProfile = (req, res, next) =>{
     }).catch((err)=>{
       console.log(err);
     })
+  }    
+  catch(e){
+    console.log(e);
+  }
 };
 
 exports.updateProfile = (req, res, next)=>{
-    console.log(req.body.email)
+  try{
     User.findOne({ where:{email:req.body.email}}).then((user)=>{
       if(user){
         user.update({firstName:req.body.firstName, lastName:req.body.lastName, email:req.body.email, password:req.body.password, status:req.body.status, role:req.body.role});
@@ -31,6 +37,10 @@ exports.updateProfile = (req, res, next)=>{
     .catch((err)=>{
       console.log(err);
     })
+  }
+  catch(e){
+    console.log(e);
+  }
   };
 
 exports.getUsers = (req,res,next)=>{

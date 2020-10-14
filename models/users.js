@@ -3,15 +3,14 @@ const sequelize = require('../connection');
 
 var Temperature = require('./temperature');
 
-class User extends Model { 
 
-    getFullname(){
-        return [this.firstName, this.lastName].join(" ");
-    }
-}
-
-User.init({
-    // Model attributes are defined here
+var User = sequelize.define('User', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement:true,
+        primaryKey: true,
+      },
+      
     firstName: {
         type: DataTypes.STRING,
         allowNull: false
@@ -38,16 +37,14 @@ User.init({
         allowNull: false,
         defaultValue:'Admin' 
     }
-}, {
-    // Other model options go here
-    sequelize, // We need to pass the connection instance
-    modelName: 'User' // We need to choose the model name
 });
 
+
 User.associate = (models)=>{
-    User.hasMany(models.Temperature,{
-        onDelete:"cascade"
-    })
+    User.hasMany(Model.Temperature)
 }
+
+User.sync({ alter: true })
+
 
 module.exports = User;

@@ -12,12 +12,17 @@ module.exports = {
     { id: {
        type: Sequelize.INTEGER,
        autoIncrement:true,
-       primaryKey: true
+       primaryKey: true,
+       allowNull:false
      },
-     email:{
-       type:Sequelize.STRING,
-       allowNull: false
-     },
+     userId: {
+      type: Sequelize.INTEGER,
+      allowNull:false,
+      references:{
+          model:'Users',
+          key:'id'
+      }
+    },
      temperature:{
       type: Sequelize.FLOAT,
       allowNull:false

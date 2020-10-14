@@ -9,6 +9,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/recordTemperature',IndexController.recordTemperature);
 
-router.get('/getTempRecords', IndexController.getTempRecords);
+router.post('/getTempRecords', IndexController.getTempRecords);
 
 module.exports = router;
