@@ -5,7 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
-var User = require('./models/users');
+var User = require('./models').User;
 
 //Initialize Sequilize
 var sequelize = require('./connection');

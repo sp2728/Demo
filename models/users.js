@@ -1,16 +1,14 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-const sequelize = require('../connection');
-
-var Temperature = require('./temperature');
+const { Model } = require('sequelize');
 
 
+module.exports = (sequelize, DataTypes) => {
 var User = sequelize.define('User', {
     id: {
-        type: Sequelize.INTEGER,
-        autoIncrement:true,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
-      },
-      
+    },
+
     firstName: {
         type: DataTypes.STRING,
         allowNull: false
@@ -27,24 +25,21 @@ var User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    status:{
+    status: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue:'Active' 
+        defaultValue: 'Active'
     },
-    role:{
+    role: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue:'Admin' 
+        defaultValue: 'Admin'
     }
-});
+}, {});
 
+User.associate = function(models) {
+    User.hasMany(models.Temperature, {foreignKey:'userId', as:'temperature'});
+  };
 
-User.associate = (models)=>{
-    User.hasMany(Model.Temperature)
+return User;
 }
-
-User.sync({ alter: true })
-
-
-module.exports = User;
