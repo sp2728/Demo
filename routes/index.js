@@ -10,20 +10,28 @@ router.post('/recordTemperature',IndexController.recordTemperature);
 
 router.post('/getTempRecords', IndexController.getTempRecords);
 
-router.post('/checkCabinInfo', IndexController.checkCabinInfo);
+router.get('/organisation-hierarchy/bc/:shipid', IndexController.getShipLocations);
 
-router.post('/generateToken', IndexController.generateToken);
+router.post('/queue/token', IndexController.generateToken);
 
-router.get('/getLocationInputs', IndexController.getLocationInputs);
+router.get('/location/serviceinputs/:locationId', IndexController.getLocationInputs);
 
-router.get('/qr/parser', IndexController.parseQRCode);
+router.get('/qr/parse', IndexController.parseQRCode);
 
-router.get('/getLocationDetails', IndexController.getLocationDetails);
+router.get('/location/:id', IndexController.getLocationDetails);
 
-router.get('/getCurrentToken', IndexController.getCurrentToken);
+router.get('/queue/currenttoken', IndexController.getCurrentToken);
 
-router.post('/guestAuthorization', IndexController.guestAuthorization);
+router.post('/auth/login', IndexController.guestAuthorization);
 
 router.get('/guestLogout', IndexController.guestLogout);
+
+router.get('/locationAvailability', IndexController.locationAvailability);
+
+router.get('/users', IndexController.guestLists)
+
+router.get('/me', IndexController.guestDetail);
+
+router.get('/queue/token/:tokenId', IndexController.tokenDetails)
 
 module.exports = router;

@@ -63,8 +63,6 @@ User.findOne({ where: { email: 'sai@gmail.com' } }).then((user) => {
         console.log(err);
       })
   }
-
-
 })
 app.use('/', indexRouter);
 app.use('/', usersRouter);

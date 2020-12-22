@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-const User = require('../models').User;
+
 const Temperature = require('../models').Temperature;
 
 const Op = Sequelize.Op
