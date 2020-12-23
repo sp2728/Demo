@@ -16,7 +16,7 @@ router.post('/queue/token', IndexController.generateToken);
 
 router.get('/location/serviceinputs/:locationId', IndexController.getLocationInputs);
 
-router.get('/qr/parse', IndexController.parseQRCode);
+router.post('/barcode/qr/parse', IndexController.parseQRCode);
 
 router.get('/location/:id', IndexController.getLocationDetails);
 
@@ -26,7 +26,7 @@ router.post('/auth/login', IndexController.guestAuthorization);
 
 router.get('/guestLogout', IndexController.guestLogout);
 
-router.get('/locationAvailability', IndexController.locationAvailability);
+router.get('/location/locationAvailability/:id', IndexController.locationAvailability);
 
 router.get('/users', IndexController.guestLists)
 

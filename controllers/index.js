@@ -251,14 +251,20 @@ exports.tokenDetails= (req, res, next)=>{
 }
 
 exports.parseQRCode = (req, res, next) => {
-
+  console.log(req.body)
   let data = {
     "ship_id": 1001,
     "location_id": 2000
   }
 
   try {
-    res.json({ success: true, status: 200, body: data })
+    if(req.body.data==123){
+      // res.json({ success: true, status: 200, body: data })
+      res.json(data)
+    }
+    else{
+      res.json({ success: true, status: 401, body: data })
+    }
   }
   catch (e) {
     console.log(e);
@@ -291,7 +297,7 @@ exports.getLocationDetails = (req, res, next) => {
   }
 
   try {
-    res.json({ success: true, status: 200, body: data })
+    res.json(data)
   }
   catch (e) {
     console.log(e);
@@ -362,6 +368,7 @@ exports.guestLogout = (req, res, next) => {
 }
 
 exports.locationAvailability = (req, res, next) => {
+  console.log(req.params.id)
   try {
     res.json({ success: true, status: 200, message: "Available" })
   }
